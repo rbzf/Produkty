@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+       <meta charset="UTF-8">
+       <title>Lista</title>
+
+</head>
+<body>
+<h3 th:text="|Lista produktow, kategoria: ${category}|"></h3>
+<div style="width: 500px; margin: 50px auto">
+       <ul>
+          <li th:each="product: ${products}"  >
+                <span  th:text="${product.name}"></span>
+                <span th:text="|${#numbers.formatDecimal(product.price, 0, 'WHITESPACE', 2, 'COMMA')} zł|"></span>
+           </li>
+       </ul>
+      <b th:text="|Suma cen: ${#numbers.formatDecimal(priceSum, 0, 'WHITESPACE', 2, 'COMMA')} zł|"></b>
+</div>
+
+</body>
+</html>
