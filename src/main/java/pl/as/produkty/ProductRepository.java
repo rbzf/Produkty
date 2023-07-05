@@ -44,7 +44,7 @@ public class ProductRepository {
     }
 
     public double getSumAll() {
-        double sum =0;
+        double sum = 0;
         for (Product product : products) {
             sum += product.getPrice();
         }
