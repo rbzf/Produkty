@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Produkty</title>
+</head>
+<body>
+<a href="" th:href="@{/lista}">wyświetl wszystkie produkty</a><br/>
+<div th:each="opt: ${T(pl.as.produkty.Category).values()}">
+
+        <a href=""
+           th:text="|wyświetl wszystkie produkty z kategorii ${opt.getDescription()}|"
+           th:href="@{'/lista?kategoria=' + ${opt.name()}}"></a><br/>
+
+</div>
+<h3>Dodawanie produktu</h3>
+<form method="POST" th:action="@{/dodaj}">
+    <label for="name">nazwa</label>
+        <input id="name" name="name" type="text" placeholder="nazwa">
+    <label for="price">cena</label>
+    <input id="price" name="price" type="number" step=0.01 placeholder=0.00>
+    <label for="category">kategoria</label>
+    <select id="category" name="category">
+        <option
+                th:each="opt: ${T(pl.as.produkty.Category).values()}"
+                th:text="${opt.name()}">
+        kategoria
+        </option>
+    </select>
+    <button type="submit">Dodaj</button>
+
+</form>
+
+</body>
+</html>
